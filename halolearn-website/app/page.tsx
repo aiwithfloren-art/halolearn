@@ -148,7 +148,7 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-3">
             {[
               { num: '1', icon: '📤', title: 'Upload CV', desc: 'Unggah CV kamu dalam format PDF atau Word' },
-              { num: '2', icon: '🤖', title: 'Analisis AI', desc: 'Sistem kami menganalisis score ATS dan memberikan feedback' },
+              { num: '2', icon: '👥', title: 'Review oleh Tim', desc: 'Tim Halolearn review CV kamu secara mendalam dan beri feedback detail' },
               { num: '3', icon: '💬', title: 'Konsultasi', desc: 'Chat dengan mentor untuk strategi improvement' }
             ].map((step) => (
               <div key={step.num} className="rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-8 text-center">
@@ -364,9 +364,38 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Pricing Snippet */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-3xl font-bold text-slate-900">Harga Terjangkau, Hasil Nyata</h2>
+          <p className="mb-10 text-slate-600">Mulai dari Rp195.000 — proses 5-7 hari kerja, bisa express.</p>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { name: 'Basic Career 1', desc: 'CV ATS + Review', price: 'Rp195.000', old: 'Rp225.000' },
+              { name: 'Supreme 1', desc: 'CV + LinkedIn + Konsul 2 Minggu + Revisi', price: 'Rp335.000', old: 'Rp365.000', best: true },
+              { name: 'Supreme 2', desc: 'CV + LinkedIn + Cover Letter + Konsul 1 Bulan', price: 'Rp435.000', old: 'Rp465.000' },
+            ].map((pkg, i) => (
+              <div key={i} className={`rounded-2xl p-6 border ${pkg.best ? 'border-slate-900 bg-slate-900 text-white' : 'border-slate-200 bg-white'}`}>
+                {pkg.best && <span className="mb-3 inline-block rounded-full bg-amber-500 px-3 py-1 text-xs font-semibold text-white">Best Seller</span>}
+                <h3 className={`font-bold text-lg ${pkg.best ? 'text-white' : 'text-slate-900'}`}>{pkg.name}</h3>
+                <p className={`mt-1 text-sm ${pkg.best ? 'text-slate-300' : 'text-slate-600'}`}>{pkg.desc}</p>
+                <div className="mt-4 flex items-baseline gap-2">
+                  <span className={`text-sm line-through ${pkg.best ? 'text-slate-400' : 'text-slate-400'}`}>{pkg.old}</span>
+                  <span className={`text-2xl font-bold ${pkg.best ? 'text-white' : 'text-slate-900'}`}>{pkg.price}</span>
+                </div>
+                <a href={whatsappLink} target="_blank" rel="noreferrer"
+                  className={`mt-4 block rounded-lg py-2.5 text-center text-sm font-medium transition ${pkg.best ? 'bg-white text-slate-900 hover:bg-slate-100' : 'border border-slate-300 text-slate-900 hover:bg-slate-50'}`}>
+                  Pesan Sekarang
+                </a>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-center text-sm text-slate-500">
+            Lihat semua paket → <Link href="/harga" className="font-medium text-slate-900 underline">halaman harga</Link>
+          </p>
+        </section>
+
         {/* CTA Section */}
         <section className="mb-24 -mx-6 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-8 py-16 text-center text-white md:py-24 shadow-xl relative overflow-hidden mx-6">
-          {/* Subtle grid pattern */}
           <div className="absolute inset-0 bg-dot-grid opacity-5" />
           <div className="relative z-10">
             <h2 className="mb-4 text-4xl font-bold">Siap Meningkatkan Karir?</h2>
@@ -379,7 +408,7 @@ export default function Home() {
               rel="noreferrer"
               className="inline-block rounded-lg bg-white px-8 py-3.5 text-sm font-medium text-slate-900 hover:bg-slate-100 transition shadow-md"
             >
-              Chat di WhatsApp
+              Chat di WhatsApp · 0852 6042 1274
             </a>
           </div>
         </section>
@@ -388,7 +417,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-gradient-to-b from-slate-50 to-white py-16">
         <div className="mx-auto max-w-7xl px-6 text-center">
-          <p className="text-sm text-slate-600">© 2024 Halolearn. Semua hak dilindungi.</p>
+          <p className="text-sm text-slate-600">© 2026 Halolearn. Semua hak dilindungi.</p>
           <p className="mt-2 text-sm text-slate-600">Hubungi kami: <a href={whatsappLink} className="font-medium text-slate-900 hover:text-slate-700">WhatsApp</a></p>
         </div>
       </footer>

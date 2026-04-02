@@ -30,10 +30,24 @@ const individualServices = [
 // Bundling Packages
 const bundlingPackages = [
   {
-    name: 'Basic Career 1',
+    name: 'Basic Career 1 (PBC1)',
     description: 'CV ATS + Review',
     price: 'Rp195.000',
     oldPrice: 'Rp225.000',
+    highlighted: false
+  },
+  {
+    name: 'Basic Super 1 - PBS1 (LinkedIn)',
+    description: 'LinkedIn Optimization + Konsul 1 Minggu',
+    price: 'Rp255.000',
+    oldPrice: 'Rp285.000',
+    highlighted: false
+  },
+  {
+    name: 'Basic Super 1 - PBS1 (CV)',
+    description: 'CV ATS/Kreatif + Konsul 1 Minggu',
+    price: 'Rp255.000',
+    oldPrice: 'Rp285.000',
     highlighted: false
   },
   {
@@ -321,8 +335,8 @@ export default function PricingPage() {
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-gradient-to-b from-slate-50 to-white py-12 mt-20">
         <div className="mx-auto max-w-7xl px-6 text-center">
-          <p className="text-sm text-slate-600">© 2024 Halolearn. Semua hak dilindungi.</p>
-          <p className="mt-2 text-sm text-slate-600">Hubungi kami: <a href={whatsappLink} className="font-medium hover:text-slate-900">WhatsApp 085260421274</a></p>
+          <p className="text-sm text-slate-600">© 2026 Halolearn. Semua hak dilindungi.</p>
+          <p className="mt-2 text-sm text-slate-600">Hubungi kami: <a href={whatsappLink} className="font-medium hover:text-slate-900">WhatsApp 0852 6042 1274</a></p>
         </div>
       </footer>
     </main>
