@@ -4,10 +4,10 @@ import Link from 'next/link';
 import PromoCountdown from '../components/PromoCountdown';
 import DarkHero from '../components/DarkHero';
 
-const whatsappLink = 'https://wa.me/6285260421274?text=Halo%2C%20saya%20tertarik%20dengan%20paket%20Halolearn.%20Kode%20promo%3A%20H4LO10';
+const whatsappLink = 'https://wa.me/6285260421274?text=Halo%2C%20saya%20tertarik%20dengan%20paket%20Halolearn.%20Kode%20promo%3A%20H4LO5';
 
 const getWhatsappLink = (packageName: string) => {
-  const encodedText = encodeURIComponent(`Halo, saya tertarik dengan paket ${packageName}. Kode promo: H4LO10`);
+  const encodedText = encodeURIComponent(`Halo, saya tertarik dengan paket ${packageName}. Kode promo: H4LO5`);
   return `https://wa.me/6285260421274?text=${encodedText}`;
 };
 
@@ -203,7 +203,7 @@ export default function PricingPage() {
         {/* Promo Info */}
         <div className="mb-16 text-center">
           <p className="text-lg font-semibold text-slate-900">
-            Gunakan kode promo <span className="text-amber-600">H4LO10</span> untuk diskon 10%
+            Gunakan kode promo <span className="text-amber-600">H4LO5</span> untuk diskon 5%
           </p>
         </div>
 
@@ -326,7 +326,7 @@ export default function PricingPage() {
         <div className="mt-20 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-8 py-16 text-center text-white md:py-20 shadow-xl">
           <h2 className="mb-4 text-4xl font-bold">Mulai Perjalanan Karir Kamu</h2>
           <p className="mb-8 text-lg text-slate-300">
-            Pilih paket, gunakan kode H4LO10 untuk diskon, dan chat kami sekarang juga
+            Pilih paket, gunakan kode H4LO5 untuk diskon, dan chat kami sekarang juga
           </p>
           <a
             href={whatsappLink}
