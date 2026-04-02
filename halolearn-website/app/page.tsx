@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import AnimatedCounter from './components/AnimatedCounter';
@@ -167,19 +168,19 @@ export default function Home() {
             <div className="grid gap-8 md:grid-cols-3">
               {[
                 {
-                  quote: 'CV saya diterima di 3 perusahaan setelah menggunakan Halolearn',
-                  name: 'Budi S.',
-                  role: 'Product Manager'
+                  quote: 'CV nya beneran ngefek! Lolos tahap screening di 4 perusahaan meskipun aku belum lulus. Langsung accept offering dalam hitungan hari setelah CV selesai.',
+                  name: 'R.A.',
+                  role: 'Fresh Graduate — Universitas Negeri'
                 },
                 {
-                  quote: 'Konsultasi karir sangat membantu memperjelas direction yang tepat',
-                  name: 'Siti R.',
-                  role: 'UX Designer'
+                  quote: 'Awalnya ragu karena sudah coba CV review di tempat lain hasilnya sama aja. Setelah Halolearn, profile summary jadi keliatan bagus dan profesional banget.',
+                  name: 'D.P.',
+                  role: 'Fresh Graduate — sedang job hunting'
                 },
                 {
-                  quote: 'Proses cepat dan feedback sangat actionable untuk improvement',
-                  name: 'Ahmad P.',
-                  role: 'Software Engineer'
+                  quote: 'Dari jarang dapat panggilan, sekarang dapat 3 interview sekaligus dalam 2 minggu. Worth every penny!',
+                  name: 'B.K.',
+                  role: 'Profesional — ingin switch karir'
                 }
               ].map((testimonial, idx) => (
                 <div key={idx} className="rounded-xl border border-slate-700 bg-white p-8 shadow-md hover:shadow-lg transition">
@@ -190,6 +191,67 @@ export default function Home() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* LinkedIn Proof Section */}
+        <section className="mb-32 -mx-6 bg-slate-50 px-6 py-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-12">
+              <h2 className="mb-4 text-3xl font-bold text-slate-900">Hasil Nyata LinkedIn Branding Halolearn</h2>
+              <p className="text-slate-600 text-lg">Bukan janji — ini data asli dari dashboard LinkedIn klien kami</p>
+            </div>
+
+            {/* Stats Cards */}
+            <div className="grid gap-8 md:grid-cols-3 mb-16">
+              <div className="rounded-xl bg-slate-900 p-8 text-center shadow-lg">
+                <div className="text-5xl font-bold text-amber-400">+321.050%</div>
+                <div className="mt-4 text-white text-lg font-medium">Peningkatan Tayangan</div>
+              </div>
+              <div className="rounded-xl bg-slate-900 p-8 text-center shadow-lg">
+                <div className="text-5xl font-bold text-amber-400">6.423</div>
+                <div className="mt-4 text-white text-lg font-medium">Tayangan dalam 7 hari</div>
+              </div>
+              <div className="rounded-xl bg-slate-900 p-8 text-center shadow-lg">
+                <div className="text-5xl font-bold text-amber-400">273</div>
+                <div className="mt-4 text-white text-lg font-medium">Followers Baru dalam 7 hari</div>
+              </div>
+            </div>
+
+            {/* Image Gallery */}
+            <div className="grid gap-6 md:grid-cols-3 mb-8">
+              {[
+                '/proof/linkedin-proof-1.jpg',
+                '/proof/linkedin-proof-2.jpg',
+                '/proof/linkedin-proof-3.jpg'
+              ].map((image, idx) => (
+                <div key={idx} className="relative h-80 rounded-xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <Image
+                    src={image}
+                    alt={`LinkedIn Analytics Proof ${idx + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Caption */}
+            <p className="text-center text-sm text-slate-600 mb-8 italic">
+              *Screenshot asli dari dashboard LinkedIn Analytics klien. Nama & foto disamarkan untuk privasi.
+            </p>
+
+            {/* CTA */}
+            <div className="text-center">
+              <a
+                href="https://wa.me/6285260421274?text=Halo%2C%20saya%20mau%20tanya%20tentang%20paket%20LinkedIn%20Branding%20Halolearn"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-block rounded-lg bg-amber-500 hover:bg-amber-600 px-8 py-3.5 text-sm font-medium text-white transition shadow-md"
+              >
+                Mau hasil seperti ini? → LinkedIn Branding mulai Rp599.000/bulan
+              </a>
             </div>
           </div>
         </section>

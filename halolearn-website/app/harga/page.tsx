@@ -37,27 +37,6 @@ const bundlingPackages = [
     highlighted: false
   },
   {
-    name: 'Basic Career 2',
-    description: 'CV Kreatif + Konsul 1 Hari',
-    price: 'Rp225.000',
-    oldPrice: 'Rp250.000',
-    highlighted: false
-  },
-  {
-    name: 'Basic Super 1 (LinkedIn)',
-    description: 'LinkedIn + Konsul 1 Minggu',
-    price: 'Rp255.000',
-    oldPrice: 'Rp285.000',
-    highlighted: false
-  },
-  {
-    name: 'Basic Super 1 (CV)',
-    description: 'CV ATS/Kreatif + Konsul 1 Minggu',
-    price: 'Rp255.000',
-    oldPrice: 'Rp285.000',
-    highlighted: false
-  },
-  {
     name: 'Supreme 1',
     description: 'CV + LinkedIn + Konsul 2 Minggu + Revisi 1x + Bonus Template Email',
     price: 'Rp335.000',
@@ -142,7 +121,7 @@ export default function PricingPage() {
   const faqItems = [
     {
       q: 'Berapa lama pengerjaan CV?',
-      a: '6-8 hari kerja (tidak termasuk weekend, hari libur, tanggal merah). Butuh express? Hubungi admin — tersedia opsi express 1 hari, 2-3 hari, atau 3-4 hari.'
+      a: '5-7 hari kerja (tidak termasuk weekend, hari libur, tanggal merah). Butuh express? Hubungi admin — tersedia opsi express 1 hari, 2-3 hari, atau 3-4 hari.'
     },
     {
       q: 'Apakah ada revisi?',
@@ -196,7 +175,7 @@ export default function PricingPage() {
       <DarkHero
         subtitle="💎 PAKET & HARGA"
         title="Pilih Paket yang Tepat"
-        description="Promo berlaku dengan share testimoni di sosmed. Pengerjaan 6-8 hari kerja."
+        description="Promo berlaku dengan share testimoni di sosmed. Pengerjaan 5-7 hari kerja."
       />
 
       <div className="mx-auto max-w-7xl px-6 py-20">

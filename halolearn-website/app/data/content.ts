@@ -177,7 +177,7 @@ export const faqItems = [
 export const completePackageHighlights = [
   "Complete Career Package: CV creation, CV review, LinkedIn optimization, career consultation, and psikotest handbook.",
   "E-learning mandiri + cohort class intensif untuk skill upgrade, dipadu template email reach-out dan delivery Telegram.",
-  "Pemesanan via bit.ly/halolearnkarir, proses 6-8 hari kerja (express on request), dan konsultasi berlanjut sesuai paket.",
+  "Pemesanan via bit.ly/halolearnkarir, proses 5-7 hari kerja (express on request), dan konsultasi berlanjut sesuai paket.",
   "Terpercaya oleh Universitas & 10.000+ kandidat; 95% berhasil mendapatkan posisi baru dalam 2-6 bulan."
 ];
 
