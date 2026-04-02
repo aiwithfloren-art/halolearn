@@ -14,6 +14,7 @@ const whatsappLink = 'https://wa.me/6285260421274?text=Halo%2C%20saya%20tertarik
 export default function Home() {
   const { data: session } = useSession();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,39 +31,58 @@ export default function Home() {
       {/* Navbar */}
       <header className={`sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur transition-shadow ${isScrolled ? 'shadow-md' : 'shadow-none'}`} style={{backgroundColor: 'rgba(255, 255, 255, 0.95)'}}>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="text-xl font-semibold tracking-tight">halolearn</div>
-          <nav className="hidden gap-8 md:flex">
+          <Link href="/" className="text-xl font-semibold tracking-tight">halolearn</Link>
+          {/* Desktop nav */}
+          <nav className="hidden gap-6 md:flex">
             <Link href="/" className="text-sm text-slate-600 hover:text-slate-900">Home</Link>
-            <Link href="/cv-analyzer" className="text-sm text-slate-600 hover:text-slate-900">CV Analyzer</Link>
-            <Link href="/interview-prep" className="text-sm text-slate-600 hover:text-slate-900">Interview Prep</Link>
-            <Link href="/linkedin-score" className="text-sm text-slate-600 hover:text-slate-900">LinkedIn Score</Link>
-            <Link href="/tentang-cv" className="text-sm text-slate-600 hover:text-slate-900">Kenapa CV Penting?</Link>
-            <Link href="/success-stories" className="text-sm text-slate-600 hover:text-slate-900">Success Stories</Link>
+            <Link href="/belajar" className="text-sm font-medium text-amber-600 hover:text-amber-700">✨ Belajar</Link>
             <Link href="/harga" className="text-sm text-slate-600 hover:text-slate-900">Harga</Link>
+            <Link href="/cv-analyzer" className="text-sm text-slate-600 hover:text-slate-900">CV Analyzer</Link>
+            <Link href="/success-stories" className="text-sm text-slate-600 hover:text-slate-900">Success Stories</Link>
           </nav>
-          {session ? (
-            <div className="flex items-center gap-4">
-              <div className="text-sm text-slate-600">
-                👤 <span className="font-medium">{session.user?.name || 'User'}</span>
+          <div className="flex items-center gap-3">
+            {session ? (
+              <div className="hidden md:flex items-center gap-3">
+                <Link href="/belajar/dashboard" className="text-sm text-slate-600 hover:text-slate-900">Dashboard</Link>
+                <button onClick={() => signOut()} className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition">Keluar</button>
               </div>
-              <button
-                onClick={() => signOut()}
-                className="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:border-slate-900 transition"
-              >
-                Keluar
-              </button>
-            </div>
-          ) : (
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-800 transition"
+            ) : (
+              <a href={whatsappLink} target="_blank" rel="noreferrer" className="hidden md:inline-block rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-800 transition">
+                Mulai Gratis
+              </a>
+            )}
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden flex flex-col gap-1.5 p-2"
+              aria-label="Menu"
             >
-              Mulai Gratis
-            </a>
-          )}
+              <span className={`block h-0.5 w-6 bg-slate-900 transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+              <span className={`block h-0.5 w-6 bg-slate-900 transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+              <span className={`block h-0.5 w-6 bg-slate-900 transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            </button>
+          </div>
         </div>
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-3">
+            <Link href="/" className="block text-sm text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+            <Link href="/belajar" className="block text-sm font-medium text-amber-600 py-2" onClick={() => setMobileMenuOpen(false)}>✨ Belajar — Soal Interview</Link>
+            <Link href="/harga" className="block text-sm text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>Harga Layanan</Link>
+            <Link href="/cv-analyzer" className="block text-sm text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>CV Analyzer</Link>
+            <Link href="/success-stories" className="block text-sm text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>Success Stories</Link>
+            {session ? (
+              <>
+                <Link href="/belajar/dashboard" className="block text-sm text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>Dashboard Belajar</Link>
+                <button onClick={() => signOut()} className="block w-full text-left text-sm text-slate-600 py-2">Keluar</button>
+              </>
+            ) : (
+              <a href={whatsappLink} target="_blank" rel="noreferrer" className="block rounded-lg bg-slate-900 px-4 py-3 text-sm font-medium text-white text-center mt-2" onClick={() => setMobileMenuOpen(false)}>
+                Mulai Gratis — Chat WA
+              </a>
+            )}
+          </div>
+        )}
       </header>
 
       {/* Hero Section with DarkHero */}
@@ -360,6 +380,43 @@ export default function Home() {
               <span className="inline-block px-4 py-2 bg-slate-100 border border-slate-300 rounded-full text-sm text-slate-600">
                 +88 perusahaan lainnya
               </span>
+            </div>
+          </div>
+        </section>
+
+        {/* Belajar Section */}
+        <section className="mb-20 -mx-6 bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-16">
+          <div className="mx-auto max-w-7xl">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+              <div className="max-w-xl">
+                <span className="inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700 mb-4">✨ BARU — Platform Belajar</span>
+                <h2 className="text-3xl font-bold text-slate-900 mb-4">Latihan Soal Interview Sesuai Posisi Kamu</h2>
+                <p className="text-slate-600 mb-6">85% kandidat gagal interview bukan karena tidak pintar — tapi karena tidak tahu apa yang ditanyakan. Latihan dengan 100 soal real per role, dilengkapi penjelasan dan timer.</p>
+                <div className="flex flex-wrap gap-3 mb-6">
+                  {['Management Trainee', 'Akuntansi', 'Administrasi', 'Human Resources', 'ODP Bank'].map((role) => (
+                    <span key={role} className="rounded-full border border-amber-300 bg-white px-3 py-1 text-xs font-medium text-slate-700">{role}</span>
+                  ))}
+                </div>
+                <div className="flex items-center gap-4">
+                  <Link href="/belajar" className="rounded-lg bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800 transition">
+                    Lihat Modul Belajar
+                  </Link>
+                  <span className="text-sm text-slate-600">Mulai dari <strong>Rp75.000</strong> / role</span>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4 md:w-64 flex-shrink-0">
+                {[
+                  { label: '100', sub: 'Soal per role' },
+                  { label: '5', sub: 'Role tersedia' },
+                  { label: '80%', sub: 'Passing score' },
+                  { label: '1 Tahun', sub: 'Masa akses' },
+                ].map((stat) => (
+                  <div key={stat.label} className="rounded-xl bg-white border border-amber-200 p-4 text-center shadow-sm">
+                    <div className="text-2xl font-bold text-slate-900">{stat.label}</div>
+                    <div className="text-xs text-slate-500 mt-1">{stat.sub}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
