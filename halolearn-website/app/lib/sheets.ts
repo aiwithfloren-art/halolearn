@@ -40,10 +40,10 @@ export async function getCodes(): Promise<CodeEntry[]> {
     });
     const rows = res.data.values || [];
     return rows.map(r => ({
-      code: r[0] || '',
+      code: (r[0] || '').trim(),
       role: r[1] || '',
       email: r[2] || '',
-      used: r[3] === 'TRUE',
+      used: r[3] === 'TRUE' || r[3] === true || r[3] === '1',
       createdAt: r[4] || '',
       expiresAt: r[5] || '',
       usedAt: r[6] || '',
@@ -58,7 +58,7 @@ export async function addCode(entry: CodeEntry): Promise<void> {
     spreadsheetId: SHEET_ID,
     range: `${CODES_RANGE}!A:G`,
     valueInputOption: 'USER_ENTERED',
-    requestBody: { values: [[entry.code, entry.role, entry.email, entry.used ? 'TRUE' : 'FALSE', entry.createdAt, entry.expiresAt, entry.usedAt]] },
+    requestBody: { values: [[entry.code, entry.role, entry.email || '', 'FALSE', entry.createdAt, entry.expiresAt, '']] },
   });
 }
 
@@ -75,9 +75,15 @@ export async function markCodeUsed(code: string, email: string): Promise<boolean
   // Update row (rowIdx + 1 because sheets is 1-indexed)
   await sheets.spreadsheets.values.update({
     spreadsheetId: SHEET_ID,
-    range: `${CODES_RANGE}!D${rowIdx + 1}:G${rowIdx + 1}`,
+    range: `${CODES_RANGE}!D${rowIdx + 1}`,
     valueInputOption: 'USER_ENTERED',
-    requestBody: { values: [['TRUE', rows[rowIdx][4], rows[rowIdx][5], new Date().toISOString()]] },
+    requestBody: { values: [['TRUE']] },
+  });
+  await sheets.spreadsheets.values.update({
+    spreadsheetId: SHEET_ID,
+    range: `${CODES_RANGE}!G${rowIdx + 1}`,
+    valueInputOption: 'USER_ENTERED',
+    requestBody: { values: [[new Date().toISOString()]] },
   });
   
   // Update email
