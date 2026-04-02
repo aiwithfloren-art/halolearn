@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 
-const SHEET_ID = '13pJIayjqsfeuiuDo7rQiIoAOsZHKoV-7Y0Swb9OMf24';
+const SHEET_ID = process.env.HALOLEARN_CODES_SHEET_ID || '13pJIayjqsfeuiuDo7rQiIoAOsZHKoV-7Y0Swb9OMf24';
 const CODES_RANGE = 'Sheet1';
 const ACCESS_RANGE = 'UserAccess';
 
