@@ -9,6 +9,8 @@ export default function WhatsAppWidget() {
   const [showBubble, setShowBubble] = useState(false);
 
   useEffect(() => {
+    // Don't show on admin pages
+    if (window.location.pathname.startsWith('/belajar/admin')) return;
     // Show bubble after 5 seconds
     const timer = setTimeout(() => {
       setShowBubble(true);
