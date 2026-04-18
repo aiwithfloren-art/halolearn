@@ -20,7 +20,7 @@ export default function NotFound() {
           </h1>
 
           <p className="mb-12 text-lg text-slate-600">
-            Tapi jangan pergi dulu — mau cek CV kamu gratis?
+            Tapi jangan pergi dulu — mau cek CV kamu?
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -28,7 +28,7 @@ export default function NotFound() {
               href="/cv-analyzer"
               className="rounded-lg bg-slate-900 px-8 py-3.5 text-sm font-medium text-white hover:bg-slate-800 transition inline-block"
             >
-              Cek CV Gratis
+              Analisa CV — Rp50.000
             </Link>
             <Link
               href="/harga"

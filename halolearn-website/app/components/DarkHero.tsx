@@ -19,7 +19,7 @@ export default function DarkHero({
   cta,
 }: DarkHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 md:py-32">
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 py-24 md:py-36">
       {/* Animated gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
@@ -47,11 +47,11 @@ export default function DarkHero({
           </div>
         )}
 
-        <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+        <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
           {title}
         </h1>
 
-        <p className="mx-auto mb-8 max-w-2xl text-lg md:text-xl text-slate-200">
+        <p className="mx-auto mb-10 max-w-2xl text-lg md:text-xl text-slate-300 leading-relaxed">
           {description}
         </p>
 

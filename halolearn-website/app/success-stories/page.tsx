@@ -97,7 +97,7 @@ export default function SuccessStories() {
             rel="noreferrer"
             className="rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-800 transition"
           >
-            Mulai Gratis
+            Hubungi Kami
           </a>
         </div>
       </header>
@@ -204,7 +204,7 @@ export default function SuccessStories() {
             rel="noreferrer"
             className="inline-block rounded-lg bg-white px-8 py-3.5 text-sm font-medium text-slate-900 hover:bg-slate-100 transition shadow-md"
           >
-            Mulai Konsultasi Gratis
+            Mulai Konsultasi Sekarang
           </a>
         </section>
       </div>

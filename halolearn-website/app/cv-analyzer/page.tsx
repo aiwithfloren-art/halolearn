@@ -173,8 +173,8 @@ function CVAnalyzerContent() {
     }, loadingMessages.length * 1200 + 800);
   };
 
-  const paymentLinkFull = `https://wa.me/6285260421274?text=${encodeURIComponent(`Halo min, saya ${session?.user?.name} mau bayar analisa CV lengkap Rp50.000. Email: ${session?.user?.email}`)}`;
-  const paymentLinkPromo = `https://wa.me/6285260421274?text=${encodeURIComponent(`Halo min mau promo 20ribu aja utk analisa cv. Nama: ${session?.user?.name}, Email: ${session?.user?.email}`)}`;
+  const paymentLinkBasic = `https://wa.me/6285260421274?text=${encodeURIComponent(`Halo min, saya ${session?.user?.name} mau bayar Analisa CV Basic Rp50.000. Email: ${session?.user?.email}`)}`;
+  const paymentLinkPremium = `https://wa.me/6285260421274?text=${encodeURIComponent(`Halo min, saya ${session?.user?.name} mau bayar Analisa CV Premium Rp80.000. Email: ${session?.user?.email}`)}`;
 
   return (
     <main className="bg-white text-slate-900">
@@ -408,13 +408,44 @@ function CVAnalyzerContent() {
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-2 mb-6">
-                      {/* Option 1 - Full Analysis (Highlighted) */}
+                      {/* Option 1 - Basic */}
+                      <div className="border-2 border-slate-300 rounded-xl p-6 bg-slate-50">
+                        <h4 className="text-lg font-bold text-slate-900 mb-1">Analisa Basic</h4>
+                        <div className="text-3xl font-bold text-slate-900 mb-1">Rp50.000</div>
+                        <span className="inline-block px-3 py-1 mb-4 bg-gray-100 text-gray-600 text-xs font-semibold rounded-full">⚡ Selesai dalam 30 menit</span>
+
+                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
+                          <li className="flex items-start gap-2">
+                            <span className="text-green-600 font-bold mt-0.5">✅</span>
+                            <span>ATS Score</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-green-600 font-bold mt-0.5">✅</span>
+                            <span>3 masalah utama</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-green-600 font-bold mt-0.5">✅</span>
+                            <span>Rekomendasi dasar</span>
+                          </li>
+                        </ul>
+
+                        <a
+                          href={paymentLinkBasic}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="block w-full bg-white border-2 border-slate-300 hover:border-slate-400 text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition"
+                        >
+                          Bayar Rp50.000 →
+                        </a>
+                      </div>
+
+                      {/* Option 2 - Premium (Highlighted) */}
                       <div className="border-2 border-slate-900 rounded-xl p-6 bg-white relative">
                         <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white px-3">
                           <span className="text-sm font-bold text-slate-900">⭐ REKOMENDASI</span>
                         </div>
-                        <h4 className="text-lg font-bold text-slate-900 mb-1">Analisa Lengkap</h4>
-                        <div className="text-3xl font-bold text-slate-900 mb-1">Rp50.000</div>
+                        <h4 className="text-lg font-bold text-slate-900 mb-1">Analisa Premium</h4>
+                        <div className="text-3xl font-bold text-slate-900 mb-1">Rp80.000</div>
                         <span className="inline-block px-3 py-1 mb-4 bg-green-100 text-green-700 text-xs font-semibold rounded-full">⚡ Selesai dalam 30 menit</span>
 
                         <ul className="space-y-2 mb-6 text-sm text-slate-700">
@@ -433,43 +464,12 @@ function CVAnalyzerContent() {
                         </ul>
 
                         <a
-                          href={paymentLinkFull}
+                          href={paymentLinkPremium}
                           target="_blank"
                           rel="noreferrer"
                           className="block w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg text-center transition"
                         >
-                          Bayar Rp50.000 →
-                        </a>
-                      </div>
-
-                      {/* Option 2 - Promo */}
-                      <div className="border-2 border-slate-300 rounded-xl p-6 bg-slate-50">
-                        <h4 className="text-lg font-bold text-slate-900 mb-1">🎁 Promo Spesial</h4>
-                        <div className="text-3xl font-bold text-slate-900 mb-1">Rp20.000</div>
-                        <span className="inline-block px-3 py-1 mb-4 bg-gray-100 text-gray-600 text-xs font-semibold rounded-full">🕐 Selesai dalam 1 jam</span>
-
-                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
-                          <li className="flex items-start gap-2">
-                            <span className="text-green-600 font-bold mt-0.5">✅</span>
-                            <span>ATS Score</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="text-green-600 font-bold mt-0.5">✅</span>
-                            <span>3 masalah utama</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="text-green-600 font-bold mt-0.5">✅</span>
-                            <span>Rekomendasi dasar</span>
-                          </li>
-                        </ul>
-
-                        <a
-                          href={paymentLinkPromo}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="block w-full bg-white border-2 border-slate-300 hover:border-slate-400 text-slate-900 font-bold py-3 px-4 rounded-lg text-center transition"
-                        >
-                          Klaim Promo Rp20.000 →
+                          Bayar Rp80.000 →
                         </a>
                       </div>
                     </div>

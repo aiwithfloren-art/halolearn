@@ -65,7 +65,7 @@ export default function PromoCountdown() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
           <span className="text-sm font-semibold text-slate-900">
-            ⏰ Promo <span className="font-bold text-amber-700">H4LO10</span> berakhir dalam:
+            ⏰ Promo <span className="font-bold text-amber-700">H4LO5</span> berakhir dalam:
           </span>
           <div className="flex gap-2 items-center justify-center">
             <div className="bg-white/80 px-3 py-1 rounded-lg shadow-sm">
