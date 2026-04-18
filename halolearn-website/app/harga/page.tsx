@@ -48,6 +48,24 @@ type DigitalProduct = {
 
 const digitalProducts: DigitalProduct[] = [
   {
+    id: 'bni-odp-playbook',
+    name: 'BNI ODP 2026 Playbook',
+    tagline: '14 hari siap interview panel BNI ODP',
+    description: 'Playbook 52 halaman — 45+ sample answers lengkap, banking knowledge primer, dan cheat sheet key facts BNI. Berdasarkan real case D.A. yang diterima BNI ODP Retail Banking 2026.',
+    price: 'Rp135.000',
+    features: [
+      'PDF 52 halaman — instant delivery via WhatsApp',
+      '5 pertanyaan behavioral interview + 15 sample answers lengkap (Fresh Grad / Internal Bank / Career Switcher)',
+      '30 additional Q&A (behavioral + teknikal banking + case study + BNI-specific)',
+      'Banking knowledge primer: 5C, 7P, 3R, NPL, kolektibilitas, KYC/AML',
+      'BNI key facts 2026: NPL 2.1%, CAR 21%, NIM 4.6%, wondr 20jt MAU',
+      'Day-of checklist H-7 sampai hari-H + follow-up email template',
+      'Glossary 60+ istilah banking',
+    ],
+    fileSize: '122 KB',
+    pages: 52,
+  },
+  {
     id: 'template-cv-bumn',
     name: 'Template CV BUMN',
     tagline: 'PDF panduan CV ATS-proof untuk bank & BUMN',
