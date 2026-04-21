@@ -82,6 +82,41 @@ async function getSheetsClient() {
   return google.sheets({ version: 'v4', auth });
 }
 
+/**
+ * Ensure "Resources" tab exists. If not, create it with headers.
+ */
+async function ensureResourcesTab() {
+  const sheets = await getSheetsClient();
+  const meta = await sheets.spreadsheets.get({ spreadsheetId: SHEET_ID });
+  const tabs = meta.data.sheets?.map((s) => s.properties?.title) || [];
+
+  if (tabs.includes(RESOURCE_LOG_RANGE)) return;
+
+  // Create tab
+  await sheets.spreadsheets.batchUpdate({
+    spreadsheetId: SHEET_ID,
+    requestBody: {
+      requests: [
+        {
+          addSheet: {
+            properties: { title: RESOURCE_LOG_RANGE },
+          },
+        },
+      ],
+    },
+  });
+
+  // Add header row
+  await sheets.spreadsheets.values.update({
+    spreadsheetId: SHEET_ID,
+    range: `${RESOURCE_LOG_RANGE}!A1:E1`,
+    valueInputOption: 'USER_ENTERED',
+    requestBody: {
+      values: [['code', 'resource_id', 'name', 'email', 'redeemed_at']],
+    },
+  });
+}
+
 // ─── Core Logic ───────────────────────────────────────────────────────────────
 
 export type RedeemResult = {
@@ -105,6 +140,7 @@ export type RedemptionLog = {
  */
 async function countRedemptions(code: string): Promise<number> {
   try {
+    await ensureResourcesTab();
     const sheets = await getSheetsClient();
     const res = await sheets.spreadsheets.values.get({
       spreadsheetId: SHEET_ID,
@@ -123,6 +159,7 @@ async function countRedemptions(code: string): Promise<number> {
  */
 async function emailAlreadyRedeemed(code: string, email: string): Promise<boolean> {
   try {
+    await ensureResourcesTab();
     const sheets = await getSheetsClient();
     const res = await sheets.spreadsheets.values.get({
       spreadsheetId: SHEET_ID,
@@ -136,6 +173,7 @@ async function emailAlreadyRedeemed(code: string, email: string): Promise<boolea
 }
 
 async function appendRedemption(log: RedemptionLog): Promise<void> {
+  await ensureResourcesTab();
   const sheets = await getSheetsClient();
   await sheets.spreadsheets.values.append({
     spreadsheetId: SHEET_ID,
@@ -193,10 +231,11 @@ export async function redeemResourceCode(params: {
       redeemedAt: new Date().toISOString(),
     });
   } catch (err) {
-    console.error('appendRedemption error', err);
+    const message = err instanceof Error ? err.message : String(err);
+    console.error('appendRedemption error:', message);
     return {
       success: false,
-      error: 'Gagal simpan data. Coba lagi dalam beberapa saat.',
+      error: `Gagal simpan data. ${message.slice(0, 120)}`,
     };
   }
 
