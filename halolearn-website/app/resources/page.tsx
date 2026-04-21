@@ -165,7 +165,7 @@ export default function ResourcesPage() {
                         required
                         value={code}
                         onChange={(e) => setCode(e.target.value.toUpperCase())}
-                        placeholder="HALOLEARN-ATS10-FREE50"
+                        placeholder="Masukin kode dari admin"
                         className="w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 font-mono text-white placeholder:text-slate-600 focus:border-amber-400 focus:outline-none"
                       />
                     </div>
