@@ -412,7 +412,7 @@ function CVAnalyzerContent() {
                       <div className="border-2 border-slate-300 rounded-xl p-6 bg-slate-50">
                         <h4 className="text-lg font-bold text-slate-900 mb-1">Analisa Basic</h4>
                         <div className="text-3xl font-bold text-slate-900 mb-1">Rp50.000</div>
-                        <span className="inline-block px-3 py-1 mb-4 bg-gray-100 text-gray-600 text-xs font-semibold rounded-full">⚡ Selesai dalam 30 menit</span>
+                        <span className="inline-block px-3 py-1 mb-4 bg-gray-100 text-gray-600 text-xs font-semibold rounded-full">⚡ Selesai dalam 2-3 hari</span>
 
                         <ul className="space-y-2 mb-6 text-sm text-slate-700">
                           <li className="flex items-start gap-2">
@@ -446,7 +446,7 @@ function CVAnalyzerContent() {
                         </div>
                         <h4 className="text-lg font-bold text-slate-900 mb-1">Analisa Premium</h4>
                         <div className="text-3xl font-bold text-slate-900 mb-1">Rp80.000</div>
-                        <span className="inline-block px-3 py-1 mb-4 bg-green-100 text-green-700 text-xs font-semibold rounded-full">⚡ Selesai dalam 30 menit</span>
+                        <span className="inline-block px-3 py-1 mb-4 bg-green-100 text-green-700 text-xs font-semibold rounded-full">⚡ Selesai dalam 24 jam</span>
 
                         <ul className="space-y-2 mb-6 text-sm text-slate-700">
                           <li className="flex items-start gap-2">
