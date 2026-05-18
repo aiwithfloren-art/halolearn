@@ -384,9 +384,6 @@ export default function CareerCopilotPage() {
                 <h3 className={`text-xl font-bold ${pkg.highlighted ? 'text-white' : 'text-slate-900'}`}>{pkg.name}</h3>
                 <p className={`mt-1 text-sm ${pkg.highlighted ? 'text-slate-300' : 'text-slate-600'}`}>{pkg.subtitle}</p>
                 <div className="mt-4 flex items-baseline gap-2">
-                  {pkg.oldPrice && (
-                    <span className={`text-sm line-through ${pkg.highlighted ? 'text-slate-400' : 'text-slate-500'}`}>{pkg.oldPrice}</span>
-                  )}
                   <span className={`text-3xl font-bold ${pkg.highlighted ? 'text-white' : 'text-slate-900'}`}>{pkg.price}</span>
                 </div>
               </div>
