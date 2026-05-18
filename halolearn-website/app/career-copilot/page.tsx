@@ -30,9 +30,9 @@ const roles = [
 
 const pricingCards = [
   {
-    name: 'Career Copilot',
-    subtitle: 'Analisis Role + Roadmap',
-    price: 'Rp100.000',
+    name: 'Copilot + CV',
+    subtitle: 'Analisis Role + CV Spesifik',
+    price: 'Rp225.000',
     features: [
       'Pilih target role (wajib)',
       'Opsional: target perusahaan',
@@ -41,17 +41,6 @@ const pricingCards = [
       'Roadmap karir personal',
       'Rekomendasi skill yang perlu ditambah',
       'Strategi positioning untuk role tersebut',
-    ],
-    cta: 'Mulai Analisis',
-    highlighted: false,
-  },
-  {
-    name: 'Career Copilot + CV',
-    subtitle: 'Analisis + CV Spesifik Role',
-    price: 'Rp200.000',
-    oldPrice: 'Rp260.000',
-    features: [
-      'Semua fitur Career Copilot',
       'CV baru yang di-tailor untuk role target',
       'Bullet point achievement yang relevan',
       'Keyword ATS sesuai role & industri',
@@ -59,17 +48,15 @@ const pricingCards = [
       'Format yang recruiter suka untuk role itu',
       'Output final langsung jadi — tanpa revisi',
     ],
-    cta: 'Ambil Paket Ini',
-    highlighted: true,
-    label: 'Best Value',
+    cta: 'Mulai Sekarang',
+    highlighted: false,
   },
   {
-    name: 'Career Copilot Lengkap',
+    name: 'Copilot Lengkap',
     subtitle: 'Analisis + CV + Cover Letter',
-    price: 'Rp300.000',
-    oldPrice: 'Rp420.000',
+    price: 'Rp325.000',
     features: [
-      'Semua fitur Career Copilot + CV',
+      'Semua fitur Copilot + CV',
       'Cover letter / surat lamaran spesifik role',
       'Naratif yang connect pengalaman ke target role',
       'Tersedia dalam bahasa Indonesia atau Inggris',
@@ -77,9 +64,25 @@ const pricingCards = [
       'Template yang bisa dipakai ulang',
       'Output final langsung jadi — tanpa revisi',
     ],
+    cta: 'Ambil Paket Ini',
+    highlighted: true,
+    label: 'Best Value',
+  },
+  {
+    name: 'Copilot Super Lengkap',
+    subtitle: 'Analisis + CV + Cover Letter + LinkedIn',
+    price: 'Rp435.000',
+    features: [
+      'Semua fitur Copilot Lengkap',
+      'Optimisasi profil LinkedIn spesifik role target',
+      'Headline & About section yang menarik recruiter',
+      'Keyword LinkedIn sesuai industri & role',
+      'Strategi LinkedIn agar mudah ditemukan HRD',
+      'Output final langsung jadi — tanpa revisi',
+    ],
     cta: 'Paket Terlengkap',
     highlighted: false,
-    label: 'Hemat Rp120.000',
+    label: 'Paling Lengkap',
   },
 ];
 
@@ -314,7 +317,7 @@ export default function CareerCopilotPage() {
           ))}
         </div>
         <div className="mt-8 text-center">
-          <p className="text-sm text-slate-500">Step 1-4 termasuk di paket dasar (Rp100.000). Step 5 & 6 adalah add-on opsional.</p>
+          <p className="text-sm text-slate-500">Step 1-5 termasuk di paket Copilot + CV (Rp225.000). Step 6 tersedia di paket Copilot Lengkap ke atas.</p>
         </div>
       </section>
 
@@ -354,7 +357,7 @@ export default function CareerCopilotPage() {
         <div className="text-center mb-12">
           <span className="inline-block rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-semibold text-amber-700 mb-4">Harga Spesial Launch</span>
           <h2 className="text-3xl font-bold text-slate-900 mb-3">Pilih Paket Career Copilot</h2>
-          <p className="text-slate-600">Mulai dari Rp100.000 — investasi terbaik untuk karir kamu</p>
+          <p className="text-slate-600">Mulai dari Rp225.000 — investasi terbaik untuk karir kamu</p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-3">
@@ -415,9 +418,12 @@ export default function CareerCopilotPage() {
           ))}
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center space-y-2">
           <p className="text-sm text-slate-500">
             Pembayaran via transfer bank. Proses dimulai setelah pembayaran dikonfirmasi.
+          </p>
+          <p className="text-xs text-slate-400 italic">
+            *S&K berlaku: wajib share testimoni setelah selesai sesi
           </p>
         </div>
       </section>
@@ -474,7 +480,7 @@ export default function CareerCopilotPage() {
           <div className="relative z-10">
             <h2 className="mb-4 text-3xl md:text-4xl font-bold">Sudah Tau Target Role Kamu?</h2>
             <p className="mb-2 text-lg text-slate-300">
-              Mulai dari Rp100.000 — kamu dapat analisis lengkap + roadmap karir personal.
+              Mulai dari Rp225.000 — kamu dapat analisis lengkap + roadmap karir personal.
             </p>
             <p className="mb-8 text-sm text-slate-400">
               Konsultasi gratis dulu juga boleh. Klik tombol di bawah.
