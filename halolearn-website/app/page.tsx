@@ -9,7 +9,11 @@ import PromoCountdown from './components/PromoCountdown';
 import LoginGate from './components/LoginGate';
 import DarkHero from './components/DarkHero';
 
-const whatsappLink = 'https://wa.me/6285260421274?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20Halolearn';
+import { buildWaGenericLink, igBioUtm } from './lib/utm';
+
+// Link bio traffic: IG → linktree/bio → halolearn-website → WA
+// UTM: utm_source=ig&utm_medium=bio&utm_campaign=may2026
+const whatsappLink = buildWaGenericLink('Halo, saya tertarik dengan layanan Halolearn', igBioUtm);
 
 export default function Home() {
   const { data: session } = useSession();
@@ -40,6 +44,7 @@ export default function Home() {
             <Link href="/harga" className="text-sm text-slate-600 hover:text-slate-900">Harga</Link>
             <Link href="/cv-analyzer" className="text-sm text-slate-600 hover:text-slate-900">CV Analyzer</Link>
             <Link href="/success-stories" className="text-sm text-slate-600 hover:text-slate-900">Success Stories</Link>
+            <Link href="/resources" className="text-sm font-medium text-amber-600 hover:text-amber-700">🎁 Resources</Link>
           </nav>
           <div className="flex items-center gap-3">
             {session ? (
@@ -73,6 +78,7 @@ export default function Home() {
             <Link href="/harga" className="block text-sm text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>Harga Layanan</Link>
             <Link href="/cv-analyzer" className="block text-sm text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>CV Analyzer</Link>
             <Link href="/success-stories" className="block text-sm text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>Success Stories</Link>
+            <Link href="/resources" className="block text-sm font-medium text-amber-600 py-2" onClick={() => setMobileMenuOpen(false)}>🎁 Resources — Free PDF</Link>
             {session ? (
               <>
                 <Link href="/belajar/dashboard" className="block text-sm text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>Dashboard Belajar</Link>
@@ -113,7 +119,7 @@ export default function Home() {
 
       <div className="mx-auto max-w-7xl px-6 py-20">
         {/* Stats Section */}
-        <section className="mb-32 -mt-12 relative z-10">
+        <section className="mb-24 -mt-12 relative z-10">
           <div className="grid gap-6 sm:grid-cols-3">
             <div className="rounded-2xl bg-gradient-to-br from-amber-50 to-white border border-amber-200/60 p-8 shadow-md hover:shadow-lg transition">
               <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-lg">📊</div>
@@ -132,7 +138,7 @@ export default function Home() {
         </section>
 
         {/* Trusted By */}
-        <section className="mb-32 rounded-3xl border border-slate-100 bg-gradient-to-b from-slate-50 to-white p-8 md:p-14 shadow-sm">
+        <section className="mb-24 rounded-3xl border border-slate-100 bg-gradient-to-b from-slate-50 to-white p-8 md:p-14 shadow-sm">
           <div className="text-center mb-10">
             <span className="inline-block rounded-full bg-slate-900 px-4 py-1.5 text-xs font-semibold text-white mb-4">🎓 UNIVERSITAS</span>
             <h3 className="text-2xl md:text-3xl font-bold text-slate-900">Dipercaya oleh Mahasiswa & Alumni dari 50+ Universitas</h3>
@@ -151,7 +157,7 @@ export default function Home() {
         </section>
 
         {/* Product Chooser — Quick Navigation */}
-        <section className="mb-32 rounded-3xl bg-gradient-to-br from-slate-50 via-white to-slate-50 p-8 md:p-14 shadow-sm border border-slate-100">
+        <section className="mb-24 rounded-3xl bg-gradient-to-br from-slate-50 via-white to-slate-50 p-8 md:p-14 shadow-sm border border-slate-100">
           <div className="text-center mb-12">
             <span className="inline-block rounded-full bg-slate-900 px-4 py-1.5 text-xs font-semibold text-white mb-4">PILIH LAYANAN</span>
             <h2 className="text-3xl font-bold text-slate-900">Mau Mulai dari Mana?</h2>
@@ -179,31 +185,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Services */}
-        <section className="mb-32">
-          <div className="text-center mb-14">
-            <span className="inline-block rounded-full bg-blue-50 border border-blue-200 px-4 py-1.5 text-xs font-semibold text-blue-700 mb-4">LAYANAN KAMI</span>
-            <h2 className="text-3xl font-bold text-slate-900">Apa yang Halolearn Bisa Bantu?</h2>
-            <p className="mt-2 text-slate-600">Layanan lengkap dari CV sampai dapet kerja</p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              { icon: '📄', title: 'CV ATS-Friendly', desc: 'CV yang lolos filter ATS dan langsung sampai ke tangan recruiter', color: 'bg-blue-50' },
-              { icon: '💼', title: 'LinkedIn Optimization', desc: 'Profile LinkedIn yang bikin HRD tertarik — bukan sekedar lengkap, tapi standout', color: 'bg-purple-50' },
-              { icon: '🎯', title: 'Konsultasi Karir', desc: 'Diskusi 1-on-1 dengan tim Halolearn untuk strategi karir kamu', color: 'bg-amber-50' },
-              { icon: '🎤', title: 'Interview Prep', desc: 'Simulasi interview + coaching untuk tampil percaya diri', color: 'bg-green-50' }
-            ].map((service) => (
-              <div key={service.title} className="group rounded-2xl border border-slate-200 bg-white p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <div className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl ${service.color} text-2xl group-hover:scale-110 transition-transform duration-300`}>{service.icon}</div>
-                <h3 className="font-bold text-slate-900">{service.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">{service.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* How It Works */}
-        <section className="mb-32">
+        <section className="mb-24">
           <div className="text-center mb-14">
             <span className="inline-block rounded-full bg-slate-100 border border-slate-200 px-4 py-1.5 text-xs font-semibold text-slate-700 mb-4">CARA KERJA</span>
             <h2 className="text-3xl font-bold text-slate-900">Semudah 1-2-3</h2>
@@ -227,7 +210,7 @@ export default function Home() {
         </section>
 
         {/* Testimonials */}
-        <section className="mb-32 -mx-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 py-24 relative overflow-hidden">
+        <section className="mb-24 -mx-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-dot-grid opacity-5" />
           <div className="mx-auto max-w-7xl relative z-10">
             <div className="text-center mb-14">
@@ -269,7 +252,7 @@ export default function Home() {
         </section>
 
         {/* LinkedIn Proof Section */}
-        <section className="mb-32 -mx-6 bg-slate-50 px-6 py-20">
+        <section className="mb-24 -mx-6 bg-slate-50 px-6 py-20">
           <div className="mx-auto max-w-7xl">
             <div className="text-center mb-12">
               <h2 className="mb-4 text-3xl font-bold text-slate-900">Hasil Nyata LinkedIn Branding Halolearn</h2>
@@ -330,7 +313,7 @@ export default function Home() {
         </section>
 
         {/* Companies Section */}
-        <section className="mb-32 -mx-6 bg-white px-6 py-20 border-y border-slate-200">
+        <section className="mb-24 -mx-6 bg-white px-6 py-20 border-y border-slate-200">
           <div className="mx-auto max-w-7xl">
             <div className="text-center mb-12">
               <h2 className="mb-3 text-3xl font-bold text-slate-900">Kandidat Kami Sudah Diterima di</h2>
@@ -437,106 +420,93 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Belajar Section */}
-        <section className="mb-20 -mx-6 bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-16">
+        {/* Belajar + Career Copilot */}
+        <section className="mb-24 -mx-6 px-6 py-16">
           <div className="mx-auto max-w-7xl">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-              <div className="max-w-xl">
-                <span className="inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700 mb-4">✨ BARU — Platform Belajar</span>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">Latihan Soal Interview Sesuai Posisi Kamu</h2>
-                <p className="text-slate-600 mb-6">85% kandidat gagal interview bukan karena tidak pintar — tapi karena tidak tahu apa yang ditanyakan. Latihan dengan 100 soal real per role, dilengkapi penjelasan dan timer.</p>
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {['Management Trainee', 'Akuntansi', 'Administrasi', 'Human Resources', 'ODP Bank'].map((role) => (
+            <div className="text-center mb-12">
+              <span className="inline-block rounded-full bg-slate-900 px-4 py-1.5 text-xs font-semibold text-white mb-4">PLATFORM BELAJAR</span>
+              <h2 className="text-3xl font-bold text-slate-900">Dua Cara Cepat Persiapkan Karir</h2>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {/* Belajar card */}
+              <div className="rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 p-8">
+                <span className="inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700 mb-4">✨ Latihan Interview</span>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">100 Soal Real per Role</h3>
+                <p className="text-slate-600 mb-5 text-sm leading-relaxed">85% kandidat gagal interview bukan karena tidak pintar — tapi karena tidak tahu apa yang ditanyakan. Latihan dengan soal real, penjelasan, dan timer.</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {['Management Trainee', 'Akuntansi', 'HR', 'Admin', 'ODP Bank'].map((role) => (
                     <span key={role} className="rounded-full border border-amber-300 bg-white px-3 py-1 text-xs font-medium text-slate-700">{role}</span>
                   ))}
                 </div>
                 <div className="flex items-center gap-4">
-                  <Link href="/belajar" className="rounded-lg bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800 transition">
-                    Lihat Modul Belajar
+                  <Link href="/belajar" className="rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-800 transition">
+                    Lihat Modul
                   </Link>
-                  <span className="text-sm text-slate-600">Mulai dari <strong>Rp75.000</strong> / role</span>
+                  <span className="text-sm text-slate-600">Mulai <strong>Rp75.000</strong> / role</span>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4 md:w-64 flex-shrink-0">
-                {[
-                  { label: '100', sub: 'Soal per role' },
-                  { label: '5', sub: 'Role tersedia' },
-                  { label: '80%', sub: 'Passing score' },
-                  { label: '1 Tahun', sub: 'Masa akses' },
-                ].map((stat) => (
-                  <div key={stat.label} className="rounded-xl bg-white border border-amber-200 p-4 text-center shadow-sm">
-                    <div className="text-2xl font-bold text-slate-900">{stat.label}</div>
-                    <div className="text-xs text-slate-500 mt-1">{stat.sub}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Career Copilot Section */}
-        <section className="mb-20 -mx-6 bg-gradient-to-br from-green-50 to-emerald-50 px-6 py-16">
-          <div className="mx-auto max-w-7xl">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-              <div className="max-w-xl">
-                <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700 mb-4">🚀 BARU — Career Copilot</span>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">Tau Target Role Kamu? Kita Bantu Sampai Sana.</h2>
-                <p className="text-slate-600 mb-6">Career Copilot dimulai dari posisi yang kamu incar. Kami analisis gap skill, bangun CV spesifik role, dan siapkan cover letter yang connect pengalamanmu ke target posisi.</p>
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {['Gap Analysis', 'CV Spesifik Role', 'Cover Letter', 'Roadmap Karir'].map((item) => (
+              {/* Career Copilot card */}
+              <div className="rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 p-8">
+                <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700 mb-4">🚀 Career Copilot</span>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">Tau Target Role? Kita Bantu Sampai Sana.</h3>
+                <p className="text-slate-600 mb-5 text-sm leading-relaxed">Dimulai dari posisi yang kamu incar. Kami analisis gap skill, bangun CV spesifik role, dan siapkan cover letter yang connect pengalamanmu ke target posisi.</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {['Gap Analysis', 'CV Targeted', 'Cover Letter', 'Roadmap'].map((item) => (
                     <span key={item} className="rounded-full border border-green-300 bg-white px-3 py-1 text-xs font-medium text-slate-700">{item}</span>
                   ))}
                 </div>
                 <div className="flex items-center gap-4">
-                  <Link href="/career-copilot" className="rounded-lg bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800 transition">
+                  <Link href="/career-copilot" className="rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-800 transition">
                     Lihat Career Copilot
                   </Link>
-                  <span className="text-sm text-slate-600">Mulai dari <strong>Rp100.000</strong></span>
+                  <span className="text-sm text-slate-600">Mulai <strong>Rp100.000</strong></span>
                 </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4 md:w-64 flex-shrink-0">
-                {[
-                  { label: '🎯', sub: 'Role-first approach' },
-                  { label: '📊', sub: 'Gap analysis' },
-                  { label: '📄', sub: 'CV targeted' },
-                  { label: '💌', sub: 'Cover letter' },
-                ].map((stat) => (
-                  <div key={stat.sub} className="rounded-xl bg-white border border-green-200 p-4 text-center shadow-sm">
-                    <div className="text-2xl">{stat.label}</div>
-                    <div className="text-xs text-slate-500 mt-1">{stat.sub}</div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
         </section>
 
         {/* Pricing Snippet */}
-        <section className="mb-20">
+        <section className="mb-24">
           <div className="text-center mb-14">
             <span className="inline-block rounded-full bg-amber-50 border border-amber-200 px-4 py-1.5 text-xs font-semibold text-amber-700 mb-4">HARGA</span>
             <h2 className="text-3xl font-bold text-slate-900">Investasi Kecil, Dampak Besar</h2>
-            <p className="mt-2 text-slate-600">Mulai dari Rp50.000 untuk analisa CV. Paket lengkap mulai Rp195.000.</p>
+            <p className="mt-2 text-slate-600">Paket lengkap mulai Rp100.000. Pilih sesuai kebutuhanmu.</p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-3">
             {[
-              { name: 'Analisa CV', desc: 'ATS score + 3 masalah utama + rekomendasi dasar', price: 'Rp50.000', tag: 'Mulai Cepat' },
-              { name: 'Analisa CV Premium', desc: 'ATS score + 8 masalah detail + role match + rekomendasi lengkap', price: 'Rp80.000', tag: 'Paling Populer', popular: true },
-              { name: 'Supreme 1', desc: 'CV + LinkedIn + Konsul 2 Minggu + Revisi', price: 'Rp335.000', old: 'Rp365.000', best: true },
-              { name: 'Supreme 2', desc: 'CV + LinkedIn + Cover Letter + Konsul 1 Bulan', price: 'Rp435.000', old: 'Rp465.000' },
+              {
+                name: 'Career Copilot',
+                desc: 'Gap analysis + CV targeted + cover letter sesuai posisi incaranmu',
+                price: 'Rp100.000',
+                tag: 'Mulai dari sini',
+                href: '/career-copilot',
+              },
+              {
+                name: 'Supreme 1',
+                desc: 'CV ATS-friendly + LinkedIn Optimization + Konsultasi 2 Minggu + Revisi',
+                price: 'Rp335.000',
+                oldPrice: 'Rp365.000',
+                best: true,
+              },
+              {
+                name: 'Supreme 2',
+                desc: 'CV + LinkedIn + Cover Letter + Konsultasi 1 Bulan penuh',
+                price: 'Rp435.000',
+                oldPrice: 'Rp465.000',
+              },
             ].map((pkg, i) => (
-              <div key={i} className={`rounded-2xl p-7 border-2 relative hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${pkg.best ? 'border-slate-900 bg-slate-900 text-white shadow-xl shadow-slate-900/20' : pkg.popular ? 'border-amber-400 bg-gradient-to-b from-amber-50 to-white shadow-lg shadow-amber-500/10' : 'border-slate-200 bg-white'}`}>
-                {pkg.popular && <div className="absolute -top-3 left-1/2 -translate-x-1/2"><span className="rounded-full bg-amber-500 px-4 py-1 text-xs font-bold text-white shadow-md">POPULER</span></div>}
-                {pkg.tag && !pkg.popular && <span className={`mb-3 inline-block rounded-full px-3 py-1 text-xs font-semibold bg-slate-100 text-slate-700`}>{pkg.tag}</span>}
+              <div key={i} className={`rounded-2xl p-7 border-2 relative hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${pkg.best ? 'border-slate-900 bg-slate-900 text-white shadow-xl shadow-slate-900/20' : 'border-slate-200 bg-white'}`}>
                 {pkg.best && <span className="mb-3 inline-block rounded-full bg-amber-500 px-3 py-1 text-xs font-bold text-white">Best Seller</span>}
+                {!pkg.best && pkg.tag && <span className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-semibold bg-slate-100 text-slate-700">{pkg.tag}</span>}
                 <h3 className={`font-bold text-lg ${pkg.best ? 'text-white' : 'text-slate-900'}`}>{pkg.name}</h3>
                 <p className={`mt-2 text-sm leading-relaxed ${pkg.best ? 'text-slate-300' : 'text-slate-600'}`}>{pkg.desc}</p>
                 <div className="mt-5 flex items-baseline gap-2">
-                  {pkg.old && <span className={`text-sm line-through ${pkg.best ? 'text-slate-400' : 'text-slate-400'}`}>{pkg.old}</span>}
+                  {pkg.oldPrice && <span className="text-sm line-through text-slate-400">{pkg.oldPrice}</span>}
                   <span className={`text-3xl font-bold ${pkg.best ? 'text-white' : 'text-slate-900'}`}>{pkg.price}</span>
                 </div>
                 <a href={whatsappLink} target="_blank" rel="noreferrer"
-                  className={`mt-5 block rounded-xl py-3 text-center text-sm font-bold transition ${pkg.best ? 'bg-white text-slate-900 hover:bg-slate-100 shadow-md' : pkg.popular ? 'bg-slate-900 text-white hover:bg-slate-800 shadow-md' : 'border-2 border-slate-200 text-slate-900 hover:border-slate-900 hover:bg-slate-50'}`}>
+                  className={`mt-5 block rounded-xl py-3 text-center text-sm font-bold transition ${pkg.best ? 'bg-white text-slate-900 hover:bg-slate-100 shadow-md' : 'border-2 border-slate-200 text-slate-900 hover:border-slate-900 hover:bg-slate-50'}`}>
                   Pesan Sekarang
                 </a>
               </div>
