@@ -30,8 +30,26 @@ const roles = [
 
 const pricingCards = [
   {
+    name: 'Career Copilot',
+    subtitle: 'Analisis Role + Roadmap',
+    oldPrice: 'Rp150.000',
+    price: 'Rp100.000',
+    features: [
+      'Pilih target role (wajib)',
+      'Opsional: target perusahaan',
+      'Upload CV kamu saat ini',
+      'Analisis gap skill vs role target',
+      'Roadmap karir personal',
+      'Rekomendasi skill yang perlu ditambah',
+      'Strategi positioning untuk role tersebut',
+    ],
+    cta: 'Mulai Analisis',
+    highlighted: false,
+  },
+  {
     name: 'Copilot + CV',
     subtitle: 'Analisis Role + CV Spesifik',
+    oldPrice: 'Rp295.000',
     price: 'Rp225.000',
     features: [
       'Pilih target role (wajib)',
@@ -54,6 +72,7 @@ const pricingCards = [
   {
     name: 'Copilot Lengkap',
     subtitle: 'Analisis + CV + Cover Letter',
+    oldPrice: 'Rp445.000',
     price: 'Rp325.000',
     features: [
       'Semua fitur Copilot + CV',
@@ -71,6 +90,7 @@ const pricingCards = [
   {
     name: 'Copilot Super Lengkap',
     subtitle: 'Analisis + CV + Cover Letter + LinkedIn',
+    oldPrice: 'Rp595.000',
     price: 'Rp435.000',
     features: [
       'Semua fitur Copilot Lengkap',
@@ -357,10 +377,10 @@ export default function CareerCopilotPage() {
         <div className="text-center mb-12">
           <span className="inline-block rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-semibold text-amber-700 mb-4">Harga Spesial Launch</span>
           <h2 className="text-3xl font-bold text-slate-900 mb-3">Pilih Paket Career Copilot</h2>
-          <p className="text-slate-600">Mulai dari Rp225.000 — investasi terbaik untuk karir kamu</p>
+          <p className="text-slate-600">Mulai dari Rp100.000 — investasi terbaik untuk karir kamu</p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {pricingCards.map((pkg) => (
             <div
               key={pkg.name}
@@ -384,6 +404,7 @@ export default function CareerCopilotPage() {
                 <h3 className={`text-xl font-bold ${pkg.highlighted ? 'text-white' : 'text-slate-900'}`}>{pkg.name}</h3>
                 <p className={`mt-1 text-sm ${pkg.highlighted ? 'text-slate-300' : 'text-slate-600'}`}>{pkg.subtitle}</p>
                 <div className="mt-4 flex items-baseline gap-2">
+                  <span className={`text-sm line-through ${pkg.highlighted ? 'text-slate-400' : 'text-slate-500'}`}>{pkg.oldPrice}</span>
                   <span className={`text-3xl font-bold ${pkg.highlighted ? 'text-white' : 'text-slate-900'}`}>{pkg.price}</span>
                 </div>
               </div>
